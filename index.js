@@ -9,15 +9,13 @@ const router = require('./routes/radioRoutes')
 // SIloeRkbl5vbB9ST
 // T_APP
 // Us34fZRU4iq7QByC
-const port = 5000 || process.env.PORT
+const port = process.env.PORT || 5000
 app.use(express.json());
 app.use(cors());
 
 //router
 app.use('/dashboard',router)
-app.get('/',(req,res)=>{
-  res.send('hello server')
-})
+
 
 const url = (`mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster0.dsw7w.mongodb.net/?retryWrites=true&w=majority`)
 const connectDB = async () => {
@@ -51,7 +49,9 @@ connectDB();
    
 
 
-  
+app.get('/',(req,res)=>{
+  res.send('hello server')
+})
 
   app.listen(port,()=>{
       console.log(`listening on port ${port}`);
