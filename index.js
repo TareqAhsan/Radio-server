@@ -15,9 +15,11 @@ app.use(cors());
 
 //router
 app.use('/dashboard',router)
+app.get('/',(req,res)=>{
+  res.send('hello server')
+})
 
-
-const url = (`mongodb+srv://T_APP:Us34fZRU4iq7QByC@cluster0.dsw7w.mongodb.net/?retryWrites=true&w=majority`)
+const url = (`mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster0.dsw7w.mongodb.net/?retryWrites=true&w=majority`)
 const connectDB = async () => {
   try {
     await mongoose.connect(url, {
